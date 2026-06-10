@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat By Sue</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        .loader-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .brand {
+            text-align: center;
+        }
+
+        .brand-main {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            color: rgba(0,0,0,0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            margin-bottom: 10px;
+            font-family: sans-serif;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 34px;
+            font-weight: 400;
+            color: #1a0a0f;
+            letter-spacing: 0.1em;
+            font-style: italic;
+        }
+
+        .brand-name span {
+            color: #c9637a;
+        }
+
+        .brand-tagline {
+            display: block;
+            font-size: 10px;
+            color: rgba(0,0,0,0.28);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-top: 10px;
+            font-style: normal;
+            font-family: sans-serif;
+        }
+
+        .loader {
+            width: 44px;
+            aspect-ratio: 1;
+            box-shadow: 0 0 0 2.5px #c9637a inset;
+            border-radius: 50%;
+            position: relative;
+            animation: spin 1.8s linear infinite;
+        }
+
+        .loader::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 4px;
+            box-shadow: 0 0 0 2.5px rgba(201, 99, 122, 0.45) inset;
+            width: 22px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: #c9637a;
+            animation: progress 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes progress {
+            0%   { width: 0%; opacity: 1; }
+            80%  { width: 85%; opacity: 1; }
+            100% { width: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loader-wrap">
+        <div class="brand">
+            <span class="brand-main">Professional Makeup Artistry</span>
+            <span class="brand-name">Beat <span>By</span> Sue</span>
+            <span class="brand-tagline">Suenell Sebesho Artistry</span>
+        </div>
+        <div class="loader"></div>
+    </div>
+
+    <div class="progress"></div>
+
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                window.location.href = './BeShop - Beauty eCommerce HTML Template/index.html';
+            }, 2600);
+        });
+    </script>
+
+</body>
+</html>
