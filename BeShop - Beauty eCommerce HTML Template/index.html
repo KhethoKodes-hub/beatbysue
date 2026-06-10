@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+	<title>Beat By Sue - Home</title>
+	<meta name='description' content="" />
+	<meta name="keywords" content="" />
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+	<link rel="preload stylesheet" href="css/style.css" as="style">
+	<style>
+		/* ADDITIONAL OVERLAY STYLES FOR HERO SECTION */
+		.main-block {
+			position: relative;
+		}
+		
+		/* Dark overlay to improve text readability */
+		.main-block::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.55); /* Semi-transparent dark overlay */
+			z-index: 1;
+			pointer-events: none; /* Allows clicking through to buttons/links if needed */
+		}
+		
+		/* Ensure content sits above the overlay */
+		.main-block .wrapper {
+			position: relative;
+			z-index: 2;
+		}
+		
+		/* Optional: enhance text contrast further (adjust if needed) */
+		.main-block__content .saint-text,
+		.main-block__content .main-text,
+		.main-block__content p,
+		.main-block__content .btn {
+			text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+		}
+		
+		/* Ensure button remains interactive */
+		.main-block__content .btn {
+			pointer-events: auto;
+			position: relative;
+			z-index: 3;
+		}
+		
+		/* Responsive adjustment: slightly lighter overlay on small screens if needed */
+		@media (max-width: 768px) {
+			.main-block::before {
+				background: rgba(0, 0, 0, 0.6);
+			}
+		}
+	</style>
+</head>
+
+<body class="loaded">
+
+	<div class="main-wrapper">
+
+		<main class="content">
+
+			<!-- BEGIN MAIN BLOCK WITH OVERLAY -->
+			<div class="main-block load-bg" style="background-image: url('img/beatassets/beat19.jpeg'); background-size: cover; background-position: center top;">
+				<div class="wrapper">
+					<div class="main-block__content">
+						<span class="saint-text">Professional</span>
+						<h1 class="main-text" style="color:white">Makeup & Beauty</h1>
+						<p style="color:white">Look and feel your best with expert makeup artistry tailored to you. From soft glam to full glam — we've got you covered.</p>
+						<a href="#" class="btn">Book now</a>
+					</div>
+				</div>
+			</div>
+			<!-- MAIN BLOCK EOF -->
+
+			<!-- BEGIN TRENDING -->
+			<section class="trending">
+				<div class="trending-content">
+					<div class="trending-top">
+						<span class="saint-text">Services</span>
+						<h2>Our services</h2>
+						<p>From everyday looks to full glam for special occasions — Beat By Sue delivers flawless results every time.</p>
+					</div>
+					<div class="tab-wrap trending-tabs">
+						<ul class="nav-tab-list tabs">
+							<li class="active"><a href="#trending-tab_1">Face Beat</a></li>
+							<li><a href="#trending-tab_2">Soft Glam</a></li>
+							<li><a href="#trending-tab_3">Full Glam</a></li>
+							<li><a href="#trending-tab_4">Nails</a></li>
+							<li><a href="#trending-tab_5">Hair Installation</a></li>
+							<li><a href="#trending-tab_6">Eye Lashes</a></li>
+						</ul>
+						<div class="box-tab-cont">
+							<div class="tab-cont" id="trending-tab_1">
+								<div class="products-items js-products-items">
+									<a href="#" class="products-item">
+										<div class="products-item__type"><span class="products-item__new">new</span></div>
+										<div class="products-item__img">
+											<img data-src="img/beatassets/beat4.jpeg" src="img/beatassets/beat4.jpeg" class="js-img" alt="Face Beat">
+											<div class="products-item__hover">
+												<i class="icon-search"></i>
+												<div class="products-item__hover-options">
+													<i class="icon-heart"></i>
+													<i class="icon-cart"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">Face Beat</span>
+											<span class="products-item__cost">Book Now</span>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="tab-cont hide" id="trending-tab_2">
+								<div class="products-items">
+									<a href="#" class="products-item">
+										<div class="products-item__type"><span class="products-item__new">new</span></div>
+										<div class="products-item__img">
+											<img data-src="img/beatassets/glam1.jpg" src="img/beatassets/glam1.jpg" class="js-img" alt="Soft Glam">
+											<div class="products-item__hover">
+												<i class="icon-search"></i>
+												<div class="products-item__hover-options">
+													<i class="icon-heart"></i>
+													<i class="icon-cart"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">Soft Glam</span>
+											<span class="products-item__cost">Book Now</span>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="tab-cont hide" id="trending-tab_3">
+								<div class="products-items">
+									<a href="#" class="products-item">
+										<div class="products-item__type"><span class="products-item__new">new</span></div>
+										<div class="products-item__img">
+											<img data-src="img/beatassets/glam2.jpg" src="img/beatassets/glam2.jpg" class="js-img" alt="Full Glam">
+											<div class="products-item__hover">
+												<i class="icon-search"></i>
+												<div class="products-item__hover-options">
+													<i class="icon-heart"></i>
+													<i class="icon-cart"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">Full Glam</span>
+											<span class="products-item__cost">Book Now</span>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="tab-cont hide" id="trending-tab_4">
+								<div class="products-items">
+									<a href="#" class="products-item">
+										<div class="products-item__type"><span class="products-item__new">new</span></div>
+										<div class="products-item__img">
+											<img data-src="img/beatassets/glam3.jpg" src="img/beatassets/glam3.jpg" class="js-img" alt="Nails">
+											<div class="products-item__hover">
+												<i class="icon-search"></i>
+												<div class="products-item__hover-options">
+													<i class="icon-heart"></i>
+													<i class="icon-cart"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">Nails</span>
+											<span class="products-item__cost">Book Now</span>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="tab-cont hide" id="trending-tab_5">
+								<div class="products-items">
+									<a href="#" class="products-item">
+										<div class="products-item__type"><span class="products-item__new">new</span></div>
+										<div class="products-item__img">
+											<img data-src="img/beatassets/beat15.jpeg" src="img/beatassets/beat15.jpeg" class="js-img" alt="Hair Installation">
+											<div class="products-item__hover">
+												<i class="icon-search"></i>
+												<div class="products-item__hover-options">
+													<i class="icon-heart"></i>
+													<i class="icon-cart"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">Hair Installation</span>
+											<span class="products-item__cost">Book Now</span>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="tab-cont hide" id="trending-tab_6">
+								<div class="products-items">
+									<a href="#" class="products-item">
+										<div class="products-item__type"><span class="products-item__new">new</span></div>
+										<div class="products-item__img">
+											<img data-src="img/beatassets/beat5.jpeg" src="img/beatassets/beat5.jpeg" class="js-img" alt="Eye Lashes">
+											<div class="products-item__hover">
+												<i class="icon-search"></i>
+												<div class="products-item__hover-options">
+													<i class="icon-heart"></i>
+													<i class="icon-cart"></i>
+												</div>
+											</div>
+										</div>
+										<div class="products-item__info">
+											<span class="products-item__name">Eye Lashes</span>
+											<span class="products-item__cost">Book Now</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- TRENDING EOF -->
+
+			<!-- BEGIN LOGOS -->
+			<div class="main-logos">
+				<img data-src="img/main-logo1.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+				<img data-src="img/main-logo2.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+				<img data-src="img/main-logo3.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+				<img data-src="img/main-logo4.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+				<img data-src="img/main-logo5.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+			</div>
+			<!-- LOGOS EOF -->
+
+			<!-- BEGIN DISCOUNT -->
+			<div class="discount js-img" data-src="img/beatassets/beat13.jpeg" style="background-image: url('img/beatassets/beat13.jpeg'); background-size: cover; background-position: center;">
+				<div class="wrapper">
+					<div class="discount-info">
+						<span class="saint-text">Special Offer</span>
+						<span class="main-text">Book Your <span>Glam</span> Today</span>
+						<p>Professional makeup artistry for every occasion. Local, celebrity and bridal looks — all done with pride and precision.</p>
+						<a href="#" class="btn">book now!</a>
+					</div>
+				</div>
+			</div>
+			<!-- DISCOUNT EOF -->
+
+			<!-- BEGIN ADVANTAGES -->
+			<div class="advantages">
+				<div class="wrapper">
+					<div class="advantages-items">
+						<div class="advantages-item">
+							<div class="advantages-item__icon"><i class="icon-natural"></i></div>
+							<h4>Innovation</h4>
+							<p>We continuously challenge our methods and vigorously pursue opportunities for improvement, delivering looks that are fresh and ahead of the trend.</p>
+						</div>
+						<div class="advantages-item">
+							<div class="advantages-item__icon"><i class="icon-quality"></i></div>
+							<h4>Quality</h4>
+							<p>We are committed to rendering services of the highest standard, taking pride in our skills and custom designed solutions for every client we serve.</p>
+						</div>
+						<div class="advantages-item">
+							<div class="advantages-item__icon"><i class="icon-organic"></i></div>
+							<h4>Integrity</h4>
+							<p>We are open, honest and consistent in all transactions and conduct our business in an ethical manner — always putting our clients first.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ADVANTAGES EOF -->
+
+			<!-- BEGIN TOP CATEGORIES -->
+			<section class="top-categories">
+				<div class="top-categories__text">
+					<span class="saint-text">Popular looks</span>
+					<h2>top services</h2>
+					<p>From subtle everyday looks to show-stopping full glam — Beat By Sue creates beauty that turns heads.</p>
+				</div>
+				<div class="top-categories__items">
+					<a href="#" class="top-categories__item">
+						<img data-src="img/beatassets/beat8.jpeg" src="img/beatassets/beat8.jpeg" class="js-img" alt="Soft Glam">
+						<div class="top-categories__item-hover">
+							<h5>Soft Glam</h5>
+							<span>book now -</span>
+							<i class="icon-arrow-lg"></i>
+						</div>
+					</a>
+					<a href="#" class="top-categories__item">
+						<img data-src="img/beatassets/beat9.jpeg" src="img/beatassets/beat9.jpeg" class="js-img" alt="Full Glam">
+						<div class="top-categories__item-hover">
+							<h5>Full Glam</h5>
+							<span>book now -</span>
+							<i class="icon-arrow-lg"></i>
+						</div>
+					</a>
+					<a href="#" class="top-categories__item">
+						<img data-src="img/beatassets/beat3.jpeg" src="img/beatassets/beat3.jpeg" class="js-img" alt="Hair Installation">
+						<div class="top-categories__item-hover">
+							<h5>Hair Installation</h5>
+							<span>book now -</span>
+							<i class="icon-arrow-lg"></i>
+						</div>
+					</a>
+				</div>
+			</section>
+			<!-- TOP CATEGORIES EOF -->
+
+			<!-- BEGIN INFO BLOCKS -->
+			<div class="info-blocks">
+				<!-- Vision block -->
+				<div class="info-blocks__item js-img" data-src="img/beatassets/beat1.jpeg" style="background-image: url('img/beatassets/beat1.jpeg'); background-size: cover; background-position: center;">
+					<div class="wrapper">
+						<div class="info-blocks__item-img">
+							<img data-src="img/beatassets/beat16.jpeg" src="img/beatassets/beat16.jpeg" class="js-img" alt="Beat By Sue Artist">
+						</div>
+						<div class="info-blocks__item-text">
+							<span class="saint-text">Our Vision</span>
+							<h2>beauty crafted for every woman</h2>
+							<span class="info-blocks__item-descr">To be a leading black woman owned enterprise with the interest of the community at heart through professional quality services.</span>
+							<p>Beat By Sue is goal oriented and visionary in satisfying the beauty needs of local and celebrity clients. The company is 100% black woman owned, guided by principles of good governance and subscribed to B-BBEE principles. We strive to have a competitive advantage in every client we serve.</p>
+							<a href="#" class="btn">Book now</a>
+						</div>
+					</div>
+				</div>
+				<!-- About block -->
+				<div class="info-blocks__item info-blocks__item-reverse js-img" data-src="img/beatassets/beat2.jpeg" style="background-image: url('img/beatassets/beat2.jpeg'); background-size: cover; background-position: center;">
+					<div class="wrapper">
+						<div class="info-blocks__item-img">
+							<img data-src="img/beatassets/beat1.jpeg" src="img/beatassets/beat1.jpeg" class="js-img" alt="Suenell Sebesho">
+							<iframe allowfullscreen></iframe>
+							<div class="info-blocks__item-img-overlay">
+								<span>Promotion video</span>
+								<div class="info-blocks__item-img-play">
+									<img data-src="img/play-btn.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="info-blocks__item-text">
+							<span class="saint-text">About Us</span>
+							<h2>Who we are</h2>
+							<span class="info-blocks__item-descr">Beat By Sue (Pty) Ltd — 100% Black Female Owned | B-BBEE Level 1 Contributor.</span>
+							<p>We are committed to render services of high standard, taking pride in our skills and custom designed solutions for our clients. With extensive knowledge of the Northern Cape market, we are establishing ourselves as major players in the beauty industry. We understand and promote the idea of working as a partnership with our clients to ensure their goals are met.</p>
+							<a href="#" class="info-blocks__item-link">
+								<i class="icon-video"></i>
+								Watch video about us
+								<i class="icon-arrow-lg"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- INFO BLOCKS EOF -->
+
+			<!-- BEGIN ALL SERVICES / ARRIVALS -->
+			<section class="arrivals">
+				<div class="trending-top">
+					<span class="saint-text">Makeup Artistry</span>
+					<h2>All services</h2>
+					<p>Professional makeup artistry for every look and every occasion — book your appointment with Beat By Sue today.</p>
+				</div>
+				<div class="products-items js-products-items">
+					<a href="#" class="products-item">
+						<div class="products-item__type"><span class="products-item__new">new</span></div>
+						<div class="products-item__img">
+							<img data-src="img/beatassets/beat4.jpeg" src="img/beatassets/beat4.jpeg" class="js-img" alt="Face Beat">
+							<div class="products-item__hover">
+								<i class="icon-search"></i>
+								<div class="products-item__hover-options"><i class="icon-heart"></i><i class="icon-cart"></i></div>
+							</div>
+						</div>
+						<div class="products-item__info">
+							<span class="products-item__name">Face Beat</span>
+							<span class="products-item__cost">Book Now</span>
+						</div>
+					</a>
+					<a href="#" class="products-item">
+						<div class="products-item__type"><span class="products-item__new">new</span></div>
+						<div class="products-item__img">
+							<img data-src="img/beatassets/glam1.jpg" src="img/beatassets/glam1.jpg" class="js-img" alt="Soft Glam">
+							<div class="products-item__hover">
+								<i class="icon-search"></i>
+								<div class="products-item__hover-options"><i class="icon-heart"></i><i class="icon-cart"></i></div>
+							</div>
+						</div>
+						<div class="products-item__info">
+							<span class="products-item__name">Soft Glam</span>
+							<span class="products-item__cost">Book Now</span>
+						</div>
+					</a>
+					<a href="#" class="products-item">
+						<div class="products-item__type"><span class="products-item__new">new</span></div>
+						<div class="products-item__img">
+							<img data-src="img/beatassets/glam2.jpg" src="img/beatassets/glam2.jpg" class="js-img" alt="Full Glam">
+							<div class="products-item__hover">
+								<i class="icon-search"></i>
+								<div class="products-item__hover-options"><i class="icon-heart"></i><i class="icon-cart"></i></div>
+							</div>
+						</div>
+						<div class="products-item__info">
+							<span class="products-item__name">Full Glam</span>
+							<span class="products-item__cost">Book Now</span>
+						</div>
+					</a>
+					<a href="#" class="products-item">
+						<div class="products-item__type"><span class="products-item__new">new</span></div>
+						<div class="products-item__img">
+							<img data-src="img/beatassets/beat3.jpeg" src="img/beatassets/beat3.jpeg" class="js-img" alt="Hair Installation">
+							<div class="products-item__hover">
+								<i class="icon-search"></i>
+								<div class="products-item__hover-options"><i class="icon-heart"></i><i class="icon-cart"></i></div>
+							</div>
+						</div>
+						<div class="products-item__info">
+							<span class="products-item__name">Hair Installation</span>
+							<span class="products-item__cost">Book Now</span>
+						</div>
+					</a>
+					<a href="#" class="products-item">
+						<div class="products-item__type"><span class="products-item__new">new</span></div>
+						<div class="products-item__img">
+							<img data-src="img/beatassets/beat10.jpeg" src="img/beatassets/beat10.jpeg" class="js-img" alt="Frontal Wig">
+							<div class="products-item__hover">
+								<i class="icon-search"></i>
+								<div class="products-item__hover-options"><i class="icon-heart"></i><i class="icon-cart"></i></div>
+							</div>
+						</div>
+						<div class="products-item__info">
+							<span class="products-item__name">Frontal Wig</span>
+							<span class="products-item__cost">Book Now</span>
+						</div>
+					</a>
+					<a href="#" class="products-item">
+						<div class="products-item__type"><span class="products-item__new">new</span></div>
+						<div class="products-item__img">
+							<img data-src="img/beatassets/beat5.jpeg" src="img/beatassets/beat5.jpeg" class="js-img" alt="Eye Lashes">
+							<div class="products-item__hover">
+								<i class="icon-search"></i>
+								<div class="products-item__hover-options"><i class="icon-heart"></i><i class="icon-cart"></i></div>
+							</div>
+						</div>
+						<div class="products-item__info">
+							<span class="products-item__name">Eye Lashes</span>
+							<span class="products-item__cost">Book Now</span>
+						</div>
+					</a>
+					<a href="#" class="products-item">
+						<div class="products-item__type"><span class="products-item__new">new</span></div>
+						<div class="products-item__img">
+							<img data-src="img/beatassets/glam3.jpg" src="img/beatassets/glam3.jpg" class="js-img" alt="Nails">
+							<div class="products-item__hover">
+								<i class="icon-search"></i>
+								<div class="products-item__hover-options"><i class="icon-heart"></i><i class="icon-cart"></i></div>
+							</div>
+						</div>
+						<div class="products-item__info">
+							<span class="products-item__name">Nails</span>
+							<span class="products-item__cost">Book Now</span>
+						</div>
+					</a>
+				</div>
+			</section>
+			<!-- ALL SERVICES EOF -->
+
+			<!-- BEGIN SUBSCRIBE -->
+			<div class="subscribe">
+				<div class="wrapper">
+					<div class="subscribe-form">
+						<div class="subscribe-form__img">
+							<img data-src="img/beatassets/beat2.jpeg" src="img/beatassets/beat2.jpeg" class="js-img" alt="Beat By Sue">
+						</div>
+						<form>
+							<h3>Stay in touch</h3>
+							<p>Get updates on new looks, offers and bookings from Beat By Sue.</p>
+							<div class="box-field__row">
+								<div class="box-field">
+									<input type="email" class="form-control" placeholder="Enter your email">
+								</div>
+								<button type="submit" class="btn">subscribe</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- SUBSCRIBE EOF -->
+
+			<!-- BEGIN INSTA PHOTOS -->
+			<div class="insta-photos">
+				<a href="#" class="insta-photo">
+					<img data-src="img/beatassets/beat6.jpeg" src="img/beatassets/beat6.jpeg" class="js-img" alt="">
+					<div class="insta-photo__hover"><i class="icon-insta"></i></div>
+				</a>
+				<a href="#" class="insta-photo">
+					<img data-src="img/beatassets/beat7.jpeg" src="img/beatassets/beat7.jpeg" class="js-img" alt="">
+					<div class="insta-photo__hover"><i class="icon-insta"></i></div>
+				</a>
+				<a href="#" class="insta-photo">
+					<img data-src="img/beatassets/beat11.jpeg" src="img/beatassets/beat11.jpeg" class="js-img" alt="">
+					<div class="insta-photo__hover"><i class="icon-insta"></i></div>
+				</a>
+				<a href="#" class="insta-photo">
+					<img data-src="img/beatassets/beat12.jpeg" src="img/beatassets/beat12.jpeg" class="js-img" alt="">
+					<div class="insta-photo__hover"><i class="icon-insta"></i></div>
+				</a>
+				<a href="#" class="insta-photo">
+					<img data-src="img/beatassets/beat14.jpeg" src="img/beatassets/beat14.jpeg" class="js-img" alt="">
+					<div class="insta-photo__hover"><i class="icon-insta"></i></div>
+				</a>
+				<a href="#" class="insta-photo">
+					<img data-src="img/beatassets/beat13.jpeg" src="img/beatassets/beat13.jpeg" class="js-img" alt="">
+					<div class="insta-photo__hover"><i class="icon-insta"></i></div>
+				</a>
+			</div>
+			<!-- INSTA PHOTOS EOF -->
+
+		</main>
+
+		<!-- BEGIN HEADER -->
+		<header class="header">
+			<div class="header-top">
+				<span>100% Black Female Owned | B-BBEE Level 1 Contributor | Reg No: 2023/678262/07</span>
+				<i class="header-top-close js-header-top-close icon-close"></i>
+			</div>
+			<div class="header-content">
+				<div class="header-logo">
+					<img src="img/header-logo.svg" alt="Beat By Sue">
+				</div>
+				<div class="header-box">
+					<ul class="header-nav">
+						<li><a href="index.html" class="active">Home</a>
+							<ul>
+								<li><a href="about.html">About Us</a></li>
+							</ul>
+						</li>
+						<li><a href="categories.html">Services</a></li>
+						<li><a href="contacts.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="btn-menu js-btn-menu"><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span></div>
+			</div>
+		</header>
+		<!-- HEADER EOF -->
+
+		<!-- BEGIN FOOTER -->
+		<footer class="footer">
+			<div class="wrapper">
+				<div class="footer-top">
+					<div class="footer-top__social">
+						<span>Find us here:</span>
+						<ul>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-insta"></i></a></li>
+							<li><a href="#"><i class="icon-in"></i></a></li>
+						</ul>
+					</div>
+					<div class="footer-top__logo">
+						<img data-src="img/footer-logo.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="Beat By Sue">
+					</div>
+					<div class="footer-top__payments">
+						<span>Payment methods:</span>
+						<ul>
+							<li><img data-src="img/payment1.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+							<li><img data-src="img/payment2.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+							<li><img data-src="img/payment3.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+							<li><img data-src="img/payment4.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-nav">
+					<div class="footer-nav__col">
+						<span class="footer-nav__col-title">About</span>
+						<ul>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="categories.html">Gallery</a></li>
+							<li><a href="shop.html">Services</a></li>
+							<li><a href="contacts.html">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footer-nav__col">
+						<span class="footer-nav__col-title">Services</span>
+						<ul>
+							<li><a href="#">Face Beat</a></li>
+							<li><a href="#">Soft Glam</a></li>
+							<li><a href="#">Full Glam</a></li>
+							<li><a href="#">Hair Installation</a></li>
+							<li><a href="#">Eye Lashes</a></li>
+							<li><a href="#">Nails</a></li>
+						</ul>
+					</div>
+					<div class="footer-nav__col">
+						<span class="footer-nav__col-title">Useful links</span>
+						<ul>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms of Use</a></li>
+							<li><a href="#">Support</a></li>
+						</ul>
+					</div>
+					<div class="footer-nav__col">
+						<span class="footer-nav__col-title">Contact</span>
+						<ul>
+							<li><i class="icon-map-pin"></i> 1739 Batlharos Nanana Section, Kuruman, Northern Cape, 8476</li>
+							<li>
+								<i class="icon-smartphone"></i>
+								<div class="footer-nav__col-phones">
+									<a href="tel:+27646955083">064 695 5083</a>
+								</div>
+							</li>
+							<li><i class="icon-mail"></i><a href="mailto:lemogangsebesho5@gmail.com">lemogangsebesho5@gmail.com</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-copy">
+					<span>&copy; All rights reserved. Beat By Sue (Pty) Ltd 2024 | Reg No: 2023/678262/07</span>
+				</div>
+			</div>
+		</footer>
+		<!-- FOOTER EOF -->
+
+	</div>
+
+	<div class="icon-load"></div>
+
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/lazyload.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/custom.js"></script>
+</body>
+
+</html>
