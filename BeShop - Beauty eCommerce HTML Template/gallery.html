@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+    <title>Beat By Sue — Gallery</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <!-- Use the existing style, but we'll override some bits inline and add gallery-specific CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style>
+        /* keep containers same size as original shop containers */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 40px 0;
+        }
+        .gallery-item {
+            position: relative;
+            background: #f5f3f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            aspect-ratio: 620 / 700; /* matches placeholder proportion */
+            width: 100%;
+            transition: box-shadow 0.2s;
+        }
+        .gallery-item:hover {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+        .gallery-item-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .gallery-item-inner img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+            opacity: 0;
+            will-change: opacity;
+        }
+        .gallery-item-inner img.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .gallery-item-inner img:not(.active) {
+            z-index: 1;
+        }
+        /* hover effect: cycle through 4 images (we'll handle with JS) */
+        .gallery-item:hover .gallery-item-inner img {
+            animation: none; /* we use JS to toggle classes */
+        }
+        /* remove all shop/cart/price stuff */
+        .header-options .icon-search,
+        .header-options .icon-user,
+        .header-options .icon-heart,
+        .header-options .icon-cart,
+        .header-options span {
+            display: none !important;
+        }
+        /* hide cart badge */
+        .header-options li:last-child span {
+            display: none !important;
+        }
+        /* hide search icon specifically */
+        .header-options li:first-child {
+            display: none !important;
+        }
+        /* hide price & cart from any other place (none exist in this template but safe) */
+        .price, .add-to-cart, .cart-btn, .product-price, .product-cart {
+            display: none !important;
+        }
+        /* adjust header nav to remove shop/cart references if needed, but keep "Gallery" active */
+        .header-nav a.active {
+            color: #b8a28c;
+        }
+        /* overwrite top categories section to gallery style */
+        .all-categories {
+            background: #fff;
+        }
+        .top-categories__items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .top-categories__item {
+            position: relative;
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f3f0;
+            aspect-ratio: 620 / 700;
+            width: 100%;
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+        .top-categories__item:hover {
+            transform: scale(1.01);
+        }
+        .top-categories__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+        .top-categories__item-hover {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.85);
+            padding: 12px 24px;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .top-categories__item-hover h5 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0;
+            color: #1a1a1a;
+        }
+        .top-categories__item-hover span {
+            color: #8a7a6a;
+            font-size: 13px;
+        }
+        .top-categories__item-hover i {
+            font-size: 18px;
+            color: #b8a28c;
+        }
+        /* hide book now / arrow on gallery items (we only show the hover with title) */
+        .top-categories__item-hover span,
+        .top-categories__item-hover i {
+            display: none;
+        }
+        .top-categories__item-hover h5 {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            color: #2c2c2c;
+        }
+        /* make the gallery items look like the shop containers but without price etc */
+        .detail-block_margin {
+            margin-bottom: 0;
+        }
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* responsive */
+        @media (max-width: 992px) {
+            .top-categories__items {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        @media (max-width: 600px) {
+            .top-categories__items {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            .top-categories__item-hover {
+                bottom: 12px;
+                left: 12px;
+                padding: 8px 16px;
+            }
+            .top-categories__item-hover h5 {
+                font-size: 14px;
+            }
+        }
+        /* hide insta photos section (we don't need it for gallery) */
+        .insta-photos {
+            display: none !important;
+        }
+        /* keep footer and header, only remove unwanted icons */
+        .header-options li:nth-child(2) { display: none; } /* user */
+        .header-options li:nth-child(3) { display: none; } /* heart */
+        .header-options li:nth-child(4) { display: none; } /* cart */
+        /* but we keep the header-options list itself for alignment */
+        .header-options {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .header-options li {
+            list-style: none;
+        }
+        /* remove payments from footer if needed, but keep design */
+        .footer-top__payments {
+            opacity: 0.5;
+        }
+        /* fix breadcrumbs active */
+        .bread-crumbs__item:last-child {
+            color: #b8a28c;
+        }
+        /* gallery item label (optional) */
+        .gallery-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.8);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 14px;
+            color: #1a1a1a;
+            backdrop-filter: blur(2px);
+            pointer-events: none;
+            z-index: 5;
+        }
+        /* for the flip effect, we use JS to manage active class */
+        .gallery-item-inner img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+        .gallery-item-inner img.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .gallery-item-inner img:not(.active) {
+            z-index: 1;
+        }
+        .gallery-item:hover .gallery-item-inner img {
+            animation: none;
+        }
+        /* small tweak for consistent spacing */
+        .top-categories {
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="loaded">
+    <div class="main-wrapper">
+        <main class="content">
+            <!-- DETAIL MAIN BLOCK (same as original) -->
+            <div class="detail-block detail-block_margin">
+                <div class="wrapper">
+                    <div class="detail-block__content">
+                        <h1>Gallery</h1>
+                        <ul class="bread-crumbs">
+                            <li class="bread-crumbs__item">
+                                <a href="index.html" class="bread-crumbs__link">Home</a>
+                            </li>
+                            <li class="bread-crumbs__item">Gallery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- GALLERY GRID (replaces top-categories) -->
+            <section class="all-categories" style="padding: 20px 0 60px;">
+                <div class="top-categories__items" id="galleryContainer">
+                    <!-- items will be injected by JS -->
+                </div>
+            </section>
+            <!-- insta-photos removed -->
+        </main>
+
+        <!-- HEADER (modified) -->
+        <header class="header">
+            <div class="header-top">
+                <span>100% Black Female Owned | B-BBEE Level 1 Contributor | Reg No: 2023/678262/07</span>
+                <i class="header-top-close js-header-top-close icon-close"></i>
+            </div>
+            <div class="header-content">
+                <div class="header-logo">
+                    <img src="img/beatassets/beatbysueLogo.jpeg" style="width: 120px; height: auto;" alt="Beat By Sue">
+                </div>
+                <div class="header-box">
+                    <ul class="header-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <!-- <li><a href="about.html">About Us</a> -->
+                           
+                        </li>
+                        <li><a href="shop.html">Services</a></li>
+                        <li><a href="categories.html" class="active">Gallery</a></li>
+                        <li><a href="contacts.html">Contact</a></li>
+                    </ul>
+                    <ul class="header-options">
+                        <!-- icons removed via CSS, but keep structure -->
+                        <li><a href="#"><i class="icon-search"></i></a></li>
+                        <li><a href="#"><i class="icon-user"></i></a></li>
+                        <li><a href="wishlist.html"><i class="icon-heart"></i></a></li>
+                        <li><a href="cart.html"><i class="icon-cart"></i><span>0</span></a></li>
+                    </ul>
+                </div>
+                <div class="btn-menu js-btn-menu"><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span></div>
+            </div>
+        </header>
+
+        <!-- FOOTER (same) -->
+        <footer class="footer">
+            <div class="wrapper">
+                <div class="footer-top">
+                    <div class="footer-top__social">
+                        <span>Find us here:</span>
+                        <ul>
+                            <li><a href="https://www.instagram.com/suenell_sebesho_artistry?igsh=MTJycnM3aWx4YWh0MA%3D%3D&utm_source=qr"><i class="icon-insta"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-top__logo">
+                        <img data-src="img/beatassets/beatbysueLogo.jpeg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" style="width: 120px; height: auto;" class="js-img" alt="Beat By Sue">
+                    </div>
+                    
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__col-title">About</span>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="categories.html">Services</a></li>
+                            <li><a href="contacts.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__col-title">Services</span>
+                        <ul>
+                            <li><a href="#">Face Beat</a></li>
+                            <li><a href="#">Soft Glam</a></li>
+                            <li><a href="#">Full Glam</a></li>
+                            <li><a href="#">Hair Installation</a></li>
+                            <li><a href="#">Eye Lashes</a></li>
+                            <li><a href="#">Nails</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__col-title">Useful links</span>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Use</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav__col">
+                        <span class="footer-nav__col-title">Contact</span>
+                        <ul>
+                            <li><i class="icon-map-pin"></i> 1739 Batlharos Nanana Section, Kuruman, Northern Cape, 8476, South Africa </li>
+                            <li><i class="icon-smartphone"></i><div class="footer-nav__col-phones"><a href="tel:+27646955083">064 695 5083</a></div></li>
+                            <li><i class="icon-mail"></i><a href="mailto:lemogangsebesho5@gmail.com">lemogangsebesho5@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-copy">
+                    <span>&copy; All rights reserved. Beat By Sue (Pty) Ltd 2024 | Reg No: 2023/678262/07</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="icon-load"></div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/lazyload.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.maskedinput.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+        (function() {
+            // total images: sue.jpeg to sue58.jpeg => 58 images (index 0..57)
+            const totalImages = 58;
+            const basePath = 'img/beatassets/';
+            const extension = '.jpeg';
+            // generate array of image filenames
+            const imageNames = [];
+            for (let i = 0; i < totalImages; i++) {
+                // sue.jpeg for i=0, sue1.jpeg for i=1 ... sue58.jpeg for i=57
+                let filename = (i === 0) ? 'sue' : 'sue' + i;
+                imageNames.push(filename + extension);
+            }
+
+            // we want to group into sets of 4 for the flip effect.
+            // but we have 58 images, we'll create containers: each container gets 4 images (if available)
+            // we'll have 15 containers (14*4 = 56, last container gets 2 images)
+            const containerCount = Math.ceil(totalImages / 4);
+            const galleryContainer = document.getElementById('galleryContainer');
+            if (!galleryContainer) return;
+
+            // Clear any placeholder
+            galleryContainer.innerHTML = '';
+
+            // For each container, pick 4 images (or less)
+            for (let c = 0; c < containerCount; c++) {
+                const startIdx = c * 4;
+                const endIdx = Math.min(startIdx + 4, totalImages);
+                const imagesForThis = imageNames.slice(startIdx, endIdx);
+                
+                // create container div
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'top-categories__item';
+                
+                // inner for images
+                const innerDiv = document.createElement('div');
+                innerDiv.className = 'gallery-item-inner';
+                
+                // add images
+                imagesForThis.forEach((imgName, idx) => {
+                    const img = document.createElement('img');
+                    img.src = basePath + imgName;
+                    img.alt = 'Gallery image ' + (startIdx + idx + 1);
+                    img.setAttribute('data-index', startIdx + idx);
+                    // set first image as active
+                    if (idx === 0) {
+                        img.classList.add('active');
+                    }
+                    innerDiv.appendChild(img);
+                });
+                
+                // hover label with image count (optional, but keep it clean)
+                const label = document.createElement('div');
+                label.className = 'top-categories__item-hover';
+                const h5 = document.createElement('h5');
+                const startNum = startIdx + 1;
+                const endNum = Math.min(startIdx + 4, totalImages);
+                h5.textContent = `#${startNum} – #${endNum}`;
+                label.appendChild(h5);
+                // hide span and i (already hidden via CSS)
+                
+                itemDiv.appendChild(innerDiv);
+                itemDiv.appendChild(label);
+                galleryContainer.appendChild(itemDiv);
+            }
+
+            // Now add hover flip effect: on mouseenter, cycle images every 800ms
+            // on mouseleave, reset to first image
+            const galleryItems = document.querySelectorAll('.top-categories__item');
+            galleryItems.forEach((item) => {
+                let intervalId = null;
+                let imgElements = item.querySelectorAll('.gallery-item-inner img');
+                if (imgElements.length <= 1) return; // no flip needed
+                
+                // store current active index
+                let currentActive = 0;
+                
+                // function to set active image
+                function setActive(index) {
+                    imgElements.forEach((img, i) => {
+                        img.classList.toggle('active', i === index);
+                    });
+                    currentActive = index;
+                }
+                
+                // start cycling
+                function startFlip() {
+                    if (intervalId) clearInterval(intervalId);
+                    intervalId = setInterval(() => {
+                        let next = (currentActive + 1) % imgElements.length;
+                        setActive(next);
+                    }, 800);
+                }
+                
+                function stopFlip() {
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                        intervalId = null;
+                    }
+                    // reset to first image
+                    setActive(0);
+                }
+                
+                item.addEventListener('mouseenter', startFlip);
+                item.addEventListener('mouseleave', stopFlip);
+                
+                // also stop if mouse leaves the entire container (optional)
+                // but we handle per item
+            });
+
+        })();
+    </script>
+</body>
+</html>
